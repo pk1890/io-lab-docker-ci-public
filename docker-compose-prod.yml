@@ -6,6 +6,13 @@ services:
     environment:
       REDIS_HOST: redis
       REDIS_PORT: 6379
+    image: pk1890/io-lab-docker-ci-public
+    ports:
+      - 5000:5000
+    depends_on: 
+      - redis
   redis:
     image: redis:6.0-rc3
     # TODO: persistence for redis. You need to persist /data directory.
+    volumes:  
+      - ./data:/data
